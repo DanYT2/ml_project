@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 10 10 12;
+    --foreground: 248 250 252;
+    --card: 20 20 24;
+    --card-foreground: 248 250 252;
+    --primary: 233 113 28;
+    --primary-foreground: 255 255 255;
+    --secondary: 30 30 36;
+    --secondary-foreground: 200 200 210;
+    --muted: 40 40 48;
+    --muted-foreground: 140 140 160;
+    --accent: 45 45 55;
+    --accent-foreground: 248 250 252;
+    --border: 50 50 60;
+    --ring: 233 113 28;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-[rgb(var(--border))];
+  }
+
+  body {
+    @apply bg-[rgb(var(--background))] text-[rgb(var(--foreground))];
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl shadow-2xl shadow-black/20;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-400 via-primary-500 to-primary-600 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 
+           text-white font-semibold rounded-xl
+           hover:from-primary-600 hover:to-primary-700
+           active:scale-[0.98] transition-all duration-200
+           shadow-lg shadow-primary-500/25;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-surface-800/50 text-surface-200
+           font-medium rounded-xl border border-surface-700/50
+           hover:bg-surface-700/50 hover:border-surface-600/50
+           active:scale-[0.98] transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-surface-900/50 border border-surface-700/50
+           rounded-xl text-surface-100 placeholder-surface-500
+           focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500/50
+           transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+/* Camera video styling */
+.camera-container {
+  @apply relative overflow-hidden rounded-2xl;
+}
+
+.camera-container video {
+  @apply w-full h-full object-cover transform -scale-x-100;
+}
+
+.camera-container canvas {
+  @apply absolute inset-0 w-full h-full transform -scale-x-100;
+  pointer-events: none;
+}
+
+/* Letter display animation */
+.letter-display {
+  @apply inline-flex items-center justify-center
+         min-w-[3rem] h-12 px-3
+         bg-gradient-to-b from-surface-700 to-surface-800
+         border border-surface-600/50 rounded-lg
+         font-display text-2xl font-bold text-white
+         shadow-lg shadow-black/20;
+}
+
+.letter-display.new {
+  animation: letterPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Word suggestion pills */
+.suggestion-pill {
+  @apply px-4 py-2 bg-surface-800/60 border border-surface-700/50
+         rounded-full text-sm font-medium text-surface-300
+         hover:bg-surface-700/60 hover:text-white hover:border-surface-600/50
+         cursor-pointer transition-all duration-200;
+}
+
+.suggestion-pill.active {
+  @apply bg-primary-500/20 border-primary-500/50 text-primary-400;
+}
+
+/* Confidence indicator */
+.confidence-bar {
+  @apply h-1.5 rounded-full bg-surface-700 overflow-hidden;
+}
+
+.confidence-fill {
+  @apply h-full rounded-full transition-all duration-300;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-surface-900/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-600/50 rounded-full hover:bg-surface-500/50;
+}
+
+/* Focus ring */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary-500/50 ring-offset-2 ring-offset-[rgb(var(--background))];
+}
+
+/* Selection */
+::selection {
+  @apply bg-primary-500/30 text-white;
+}
+

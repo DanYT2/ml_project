@@ -1,0 +1,85 @@
+# Training Configuration for ASL Recognition Model
+# ================================================
+
+# Model settings
+model:
+  type: static  # Options: static, conv, hybrid, landmark
+  num_classes: 27  # 26 letters + DELETE
+  sequence_length: 30  # For hybrid model
+  
+  # Architecture
+  hidden_units: [512, 256, 128, 64]
+  spatial_filters: [64, 128, 128]
+  lstm_units: 128
+  use_attention: true
+
+# Training hyperparameters
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.001
+  min_learning_rate: 0.000001
+  warmup_epochs: 5
+  
+  # Optimizer
+  optimizer: adam
+  weight_decay: 0.0001
+
+# Regularization
+regularization:
+  dropout_rate: 0.4
+  l2_reg: 0.001
+  label_smoothing: 0.1
+
+# Data augmentation
+augmentation:
+  enabled: true
+  rotation_range: 15.0  # degrees
+  scale_range: [0.9, 1.1]
+  translation_range: 0.1
+  noise_stddev: 0.02
+  
+  # Temporal (for sequences)
+  time_warp_range: 0.2
+  frame_drop_rate: 0.1
+
+# Callbacks
+callbacks:
+  early_stopping:
+    patience: 15
+    monitor: val_accuracy
+    mode: max
+    restore_best_weights: true
+    
+  reduce_lr_on_plateau:
+    patience: 5
+    factor: 0.5
+    min_lr: 0.000001
+    monitor: val_accuracy
+    mode: max
+
+# Data paths
+data:
+  train_dir: data/asl_alphabet_train
+  test_dir: data/asl_alphabet_test
+  cache_dir: data/cache
+  val_split: 0.1
+  test_split: 0.2
+
+# Output paths
+output:
+  checkpoint_dir: models/checkpoints
+  log_dir: logs
+  model_dir: models
+  export_dir: web/public/model
+
+# Experiment tracking
+experiment:
+  name: ""  # Auto-generated if empty
+  seed: 42
+  
+# Hardware
+hardware:
+  gpu_memory_limit: null  # MB, null for no limit
+  mixed_precision: false
+

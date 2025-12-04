@@ -1,0 +1,15 @@
+{
+  "input_shape": [null, 63],
+  "output_shape": [null, 27],
+  "num_classes": 27,
+  "quantized": false,
+  "class_names": [
+    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+    "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+    "U", "V", "W", "X", "Y", "Z", "DELETE"
+  ],
+  "description": "ASL Alphabet Recognition Model",
+  "version": "1.0.0",
+  "notes": "This is a placeholder. Run `python scripts/export_model.py --create-dummy` to generate a working model."
+}
+
