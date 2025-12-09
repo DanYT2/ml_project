@@ -37,3 +37,5 @@ public/model/*.bin
 public/model/model.json
 !public/model/metadata.json
 
+
+

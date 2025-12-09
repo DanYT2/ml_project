@@ -135,3 +135,5 @@ export default function Camera({ onPrediction, onModelLoaded, showLandmarks }: C
   );
 }
 
+
+
