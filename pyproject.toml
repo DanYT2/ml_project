@@ -3,11 +3,13 @@ name = "ml-project"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = "==3.10.18"
 dependencies = [
     "click>=8.3.1",
+    "fastapi>=0.115.0",
     "gdown>=5.2.0",
     "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.8",
     "kaggle>=1.7.4.5",
     "matplotlib>=3.10.7",
     "mediapipe>=0.10.21",
@@ -25,4 +27,6 @@ dependencies = [
     "seaborn>=0.13.2",
     "tensorflow>=2.18.1",
     "tensorflowjs>=3.15.0",
+    "tqdm>=4.67.1",
+    "uvicorn>=0.32.0",
 ]
